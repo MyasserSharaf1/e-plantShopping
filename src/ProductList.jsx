@@ -1,10 +1,13 @@
-import React, { useState,useEffect } from 'react';
-import './ProductList.css'
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import './ProductList.css';
 import CartItem from './CartItem';
+import { addItem } from './cartActions'; // Import your action creators
+
 function ProductList() {
     const [showCart, setShowCart] = useState(false);
-    const [addedToCart, setAddedToCart] = useState({}); // State to track added items
-    const dispatch = useDispatch(); // Initialize the dispatch function
+    const dispatch = useDispatch();
+    const cart = useSelector((state) => state.cart); // Retrieve cart items from Redux store
 
     const plantsArray = [
         {
